@@ -34,3 +34,4 @@ Querying 198.41.0.4 for dns.google.com
 
 1. RFC documentation : https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.1
 2. DNS message in-depth : https://cabulous.medium.com/dns-message-how-to-read-query-and-response-message-cfebcb4fe817
+3. DNS resolver : https://cabulous.medium.com/domain-name-dns-resolution-how-it-works-bddafa0246ed

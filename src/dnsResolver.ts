@@ -98,14 +98,17 @@ export class DnsResolver {
      */
     private getValidNextServer(additional: IResourceRecord[]): string {
         for (let i = 0; i < additional.length; i++) {
-        const rrType = additional[i].type;
-        const rrClass = additional[i].class;
-        if (
-            (rrType === TypeValues.A || rrType === TypeValues.NS) &&
-            rrClass === ClassValues.IN
-        ) {
-            return additional[i].data;
-        }
+            const rrType = additional[i].type;
+            const rrClass = additional[i].class;
+            // type A -> host address i.e the server that will give us the IP address of the domain that we are looking for
+            // type NS -> authoritative name server. it contains a list of authoritative servers that we need to query on
+            // class IN -> internet
+            if (
+                (rrType === TypeValues.A || rrType === TypeValues.NS) &&
+                rrClass === ClassValues.IN
+            ) {
+                return additional[i].data;
+            }
         }
 
         throw new Error('No valid Next Server found');
